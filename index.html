@@ -158,7 +158,6 @@
             overflow: hidden;
         }
 
-        /* Subtle grid overlay for tech feel */
         .hero::before {
             content: "";
             position: absolute;
@@ -198,12 +197,10 @@
             align-items: center;
         }
 
-        /* NEW: Specific CSS for the Book Mockup */
         .book-img {
             width: 100%;
-            max-width: 480px; /* Limits the giant image to a good size */
+            max-width: 480px; 
             height: auto;
-            /* Using drop-shadow filter handles transparent backgrounds better than box-shadow */
             filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5)); 
             animation: float 6s ease-in-out infinite;
             transform-origin: center center;
@@ -295,6 +292,7 @@
             color: var(--text-secondary);
         }
 
+        /* --- UPDATED CSS: DEFINITION LIST STYLE --- */
         .learning-list {
             text-align: left;
             background: var(--bg-card);
@@ -303,17 +301,27 @@
         }
 
         .learning-list li {
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: flex-start;
+            margin-bottom: 2rem; /* Increased space between items */
+            position: relative;
+            padding-left: 2.5rem; /* Creates the "gutter" for the bullet */
+            display: block;
         }
 
         .learning-list li::before {
             content: ">>";
             font-family: var(--font-mono);
             color: var(--accent-orange);
-            margin-right: 1rem;
             font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0; /* Aligns with the Title */
+        }
+
+        .learning-list li strong {
+            display: block; /* Forces the description text to the next line */
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem; /* Space between Title and Description */
         }
 
         /* --- ABOUT AUTHOR --- */
@@ -336,14 +344,12 @@
             position: relative;
         }
 
-        /* NEW: Specific CSS for Profile Picture */
         .profile-img {
             width: 100%;
-            height: 320px; /* Fixed height to force circle */
-            object-fit: cover; /* Crucial: Ensures image doesn't stretch */
+            height: 320px; 
+            object-fit: cover; 
             border-radius: 50%;
             border: 3px solid var(--accent-orange);
-            /* Grayscale by default, color on hover - adds interactive tech feel */
             filter: grayscale(100%) contrast(1.1);
             transition: filter 0.4s ease;
         }
@@ -402,7 +408,6 @@
                 font-size: 2.5rem;
             }
             
-            /* Order change on mobile: Visual first, then text */
             .hero-visual {
                 order: -1;
                 margin-bottom: 2rem;
@@ -544,5 +549,4 @@
     </footer>
 
 </body>
-
 </html>
