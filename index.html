@@ -19,6 +19,19 @@
     <meta property="twitter:description" content="The manager's guide to the Software-Defined Factory. Turn AI pilots into production assets.">
     <meta property="twitter:image" content="https://www.victoralvarez.io/images/social-preview.jpg">
     <!-- Google Tag Manager -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+
+        // 2. Set Default Consent to 'denied'
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied'
+        });
+    </script>
+
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -465,6 +478,52 @@
             font-size: 0.8rem;
             color: #555;
         }
+        /* --- COOKIE BANNER --- */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--accent-orange);
+            padding: 1.5rem;
+            z-index: 9999; /* On top of everything */
+            display: none; /* Hidden by default, JS turns it on */
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.5);
+        }
+
+        .cookie-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .cookie-text p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .cookie-text h3 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.8rem;
+        }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
@@ -503,14 +562,21 @@
                 height: 280px;
                 max-width: 280px;
             }
+            .cookie-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .cookie-buttons {
+                width: 100%;
+                justify-content: flex-start;
+            }
         }
+
+
+
     </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WB4NLVFQ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
     <header>
         <div class="container">
             <nav>
@@ -627,8 +693,60 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </div>
     </footer>
+<div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h3>System Telemetry</h3>
+                <p>We use cookies to analyze traffic and improve the user experience. No personal data is sold. 
+            </div>
+            <div class="cookie-buttons">
+                <button id="btn-reject" class="btn btn-outline btn-small">Reject</button>
+                <button id="btn-accept" class="btn btn-small">Accept Telemetry</button>
+            </div>
+        </div>
+    </div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const banner = document.getElementById('cookie-banner');
+            const acceptBtn = document.getElementById('btn-accept');
+            const rejectBtn = document.getElementById('btn-reject');
+
+            // 1. Check if user has already made a choice
+            if (!localStorage.getItem('cookieConsent')) {
+                banner.style.display = 'block'; // Show banner if no choice yet
+            } else {
+                // If they accepted previously, ensure GTM knows
+                if (localStorage.getItem('cookieConsent') === 'granted') {
+                    updateGTM('granted');
+                }
+            }
+
+            // 2. Function to update Google
+            function updateGTM(consentState) {
+                gtag('consent', 'update', {
+                    'ad_storage': consentState,
+                    'ad_user_data': consentState,
+                    'ad_personalization': consentState,
+                    'analytics_storage': consentState
+                });
+            }
+
+            // 3. Handle Accept Click
+            acceptBtn.addEventListener('click', function() {
+                localStorage.setItem('cookieConsent', 'granted');
+                updateGTM('granted');
+                banner.style.display = 'none';
+            });
+
+            // 4. Handle Reject Click
+            rejectBtn.addEventListener('click', function() {
+                localStorage.setItem('cookieConsent', 'denied');
+                updateGTM('denied'); // Explicitly deny (redundant but safe)
+                banner.style.display = 'none';
+            });
+        });
+    </script>
 </body>
 </html>
-
 
