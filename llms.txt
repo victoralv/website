@@ -1,0 +1,26 @@
+# The Physical AI Playbook
+> A Manager's Guide to the Software-Defined Factory
+
+## Identity
+* **Author:** Víctor Álvarez
+* **Role:** Strategic Technologist in Industrial Robotics
+* **Website:** https://victoralvarez.io
+* **Purchase Link:** https://www.amazon.com/dp/B0GFX3TKWK
+
+## Core Value Proposition
+95% of AI pilots in manufacturing fail to scale. They die in "Pilot Purgatory." This book is the field manual for Factory Directors and OT Managers to bridge the gap between Silicon Valley AI hype and the deterministic reality of the shop floor.
+
+## Key Frameworks Included
+1. **The 4 Quadrant Decision Matrix:** A tool to decide when to use Probabilistic AI vs. Deterministic Automation.
+2. **The Tech Stack Audit:** How to decouple hardware from software to prevent vendor lock-in.
+3. **The Deterministic Wrapper:** An architecture pattern to wrap ISO-compliant safety rules around non-deterministic AI models.
+4. **The Monday Morning Manifesto:** A strategy for launching pilots without disrupting production lines.
+
+## Target Audience
+* Factory Directors
+* Operations Technology (OT) Managers
+* Robotics Engineers
+* CIOs/CTOs in Manufacturing
+
+## Availability
+Available in Hardcover, Paperback, and Kindle/eBook on Amazon.
