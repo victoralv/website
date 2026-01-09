@@ -95,6 +95,34 @@
             background: rgba(255,255,255,0.1);
         }
 
+        .format-badges {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .format-item {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .format-item::before {
+            content: "";
+            display: block;
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-orange);
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
         h1, h2, h3 {
             font-weight: 800;
             letter-spacing: -0.02em;
@@ -456,9 +484,16 @@
             <div class="hero-grid">
                 <div class="hero-content">
                     <h1>Stop Building Science Projects.</h1>
-                    <span class="mono-accent">The Field Manual for the Software-Defined Factory</span>
+                    <span class="mono-accent">The Field Manual to the Software-Defined Factory</span>
                     <p>Bridging the gap between Silicon Valley AI hype and Detroit shop floor reality. A practical guide for managers tired of Pilot Purgatory.</p>
+                    
                     <a href="https://www.amazon.com/dp/B0GFX3TKWK" target="_blank" class="btn">ORDER ON AMAZON</a>
+                    
+                    <div class="format-badges">
+                        <span class="format-item">Hard Cover</span>
+                        <span class="format-item">Paperback</span>
+                        <span class="format-item">Kindle / eBook</span>
+                    </div>
                 </div>
                 <div class="hero-visual">
                     <img src="images/TransparentBook.png" 
