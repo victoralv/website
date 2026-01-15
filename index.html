@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>The Physical AI Playbook | Víctor Álvarez | Industrial AI Strategy</title>
+    <meta name="description" content="Stop building science projects. The Physical AI Playbook is the field manual for Factory Directors and OT Managers to turn AI pilots into scalable production assets.">
+    <meta name="keywords" content="Physical AI, Industrial AI, Manufacturing Strategy, Robotics, OT Management, AI Pilot Purgatory, Víctor Álvarez">
+    <meta name="author" content="Víctor Álvarez">
+    <link rel="canonical" href="https://www.victoralvarez.io/">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta property="og:type" content="book">
+    <meta property="og:url" content="https://www.victoralvarez.io/">
+    <meta property="og:title" content="Stop Building Science Projects. Get The Physical AI Playbook.">
+    <meta property="og:description" content="95% of AI pilots don't scale. This is the field manual to the Software-Defined Factory. Bridging the gap between Silicon Valley hype and shop floor reality.">
+    <meta property="og:image" content="https://www.victoralvarez.io/images/social-preview.jpg"> <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.victoralvarez.io/">
+    <meta property="twitter:title" content="The Physical AI Playbook | Víctor Álvarez">
+    <meta property="twitter:description" content="The manager's guide to the Software-Defined Factory. Turn AI pilots into production assets.">
+    <meta property="twitter:image" content="https://www.victoralvarez.io/images/social-preview.jpg">
+    <!-- Google Tag Manager -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+
+        // 2. Set Default Consent to 'denied'
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied'
+        });
+    </script>
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WB4NLVFQ');</script>
+    <!-- End Google Tag Manager -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "The Physical AI Playbook",
+      "author": {
+        "@type": "Person",
+        "name": "Víctor Álvarez",
+        "jobTitle": "Strategic Technologist in Industrial Robotics",
+        "url": "https://www.linkedin.com/in/victoralvarez/"
+      },
+      "url": "https://www.victoralvarez.io",
+      "workExample": {
+        "@type": "Book",
+        "isbn": "YOUR_ISBN_HERE", 
+        "bookFormat": "https://schema.org/Hardcover"
+      },
+      "headline": "A Manager's Guide to the Software-Defined Factory",
+      "description": "Bridging the gap between Silicon Valley AI hype and Detroit shop floor reality.",
+      "image": "https://www.victoralvarez.io/images/TransparentBook.png"
+    }
+    </script>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            /* Palette: Industrial Modern */
+            --bg-primary: #0A2E2A; /* Deep Industrial Green */
+            --bg-secondary: #051A18; /* Darker shade for contrast */
+            --bg-card: #121212; /* Dark Charcoal for cards/sections */
+            
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            
+            --accent-orange: #FF5722; /* Safety Orange */
+            --accent-orange-hover: #E64A19;
+            
+            --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-mono: 'Courier New', Courier, monospace;
+            
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+            --border-radius: 2px; /* Sharp, industrial corners */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* --- UTILITY CLASSES --- */
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-orange);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--accent-orange);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-orange-hover);
+            border-color: var(--accent-orange-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--text-primary);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .format-badges {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .format-item {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .format-item::before {
+            content: "";
+            display: block;
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-orange);
+            border-radius: 50%;
+            opacity: 0.7;
+        }
+
+        h1, h2, h3 {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .mono-accent {
+            font-family: var(--font-mono);
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(10, 46, 42, 0.95); /* Semi-transparent primary */
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a.link {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .nav-links a.link:hover {
+            color: var(--text-primary);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .book-img {
+            width: 100%;
+            max-width: 480px; 
+            height: auto;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5)); 
+            animation: float 6s ease-in-out infinite;
+            transform-origin: center center;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* --- PROBLEM SECTION --- */
+        .problem-section {
+            background-color: var(--bg-secondary);
+            padding: 5rem 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-block {
+            font-size: 1.5rem;
+            font-family: var(--font-mono);
+            color: var(--accent-orange);
+            border: 1px solid var(--accent-orange);
+            display: inline-block;
+            padding: 1rem 2rem;
+            margin-top: 1rem;
+            background: rgba(255, 87, 34, 0.1);
+        }
+
+        .pain-points-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pain-card {
+            background-color: var(--bg-card);
+            padding: 2.5rem;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .pain-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-orange);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .pain-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .pain-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* --- SOLUTION SECTION --- */
+        .solution-section {
+            background-color: var(--bg-primary); 
+            padding: 5rem 0;
+        }
+
+        .solution-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .solution-content p.intro {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: var(--text-secondary);
+        }
+
+        /* --- UPDATED CSS: DEFINITION LIST STYLE --- */
+        .learning-list {
+            text-align: left;
+            background: var(--bg-card);
+            padding: 3rem;
+            border-left: 4px solid var(--accent-orange);
+        }
+
+        .learning-list li {
+            margin-bottom: 2rem; /* Increased space between items */
+            position: relative;
+            padding-left: 2.5rem; /* Creates the "gutter" for the bullet */
+            display: block;
+        }
+
+        .learning-list li::before {
+            content: ">>";
+            font-family: var(--font-mono);
+            color: var(--accent-orange);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0; /* Aligns with the Title */
+        }
+
+        .learning-list li strong {
+            display: block; /* Forces the description text to the next line */
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem; /* Space between Title and Description */
+        }
+
+        /* --- ABOUT AUTHOR --- */
+        .about-section {
+            background-color: var(--bg-secondary);
+            padding: 5rem 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .author-photo-container {
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 320px; 
+            object-fit: cover; 
+            border-radius: 50%;
+            border: 3px solid var(--accent-orange);
+            filter: grayscale(100%) contrast(1.1);
+            transition: filter 0.4s ease;
+        }
+
+        .author-photo-container:hover .profile-img {
+            filter: grayscale(0%) contrast(1);
+        }
+
+        .author-bio h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .author-bio p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #000;
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-links a {
+            margin: 0 1rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-orange);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: #555;
+        }
+        /* --- COOKIE BANNER --- */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--accent-orange);
+            padding: 1.5rem;
+            z-index: 9999; /* On top of everything */
+            display: none; /* Hidden by default, JS turns it on */
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.5);
+        }
+
+        .cookie-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .cookie-text p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .cookie-text h3 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.8rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-grid, .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-visual {
+                order: -1;
+                margin-bottom: 2rem;
+            }
+
+            .nav-links {
+                display: none; 
+            }
+            
+            nav {
+                padding: 0 1rem;
+            }
+            
+            .learning-list {
+                padding: 1.5rem;
+            }
+            
+            .book-img {
+                max-width: 300px;
+            }
+            
+            .profile-img {
+                height: 280px;
+                max-width: 280px;
+            }
+            .cookie-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .cookie-buttons {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">VÍCTOR ÁLVAREZ // IO</div>
+                <div class="nav-links">
+                    <a href="#book" class="link">The Book</a>
+                    <a href="#about" class="link">About</a>
+                    <a href="https://www.amazon.com/dp/B0GFX3TKWK" target="_blank" class="btn">GET THE PLAYBOOK</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>Stop Building Science Projects.</h1>
+                    <span class="mono-accent">The Field Manual to the Software-Defined Factory</span>
+                    <p>Bridging the gap between Silicon Valley AI hype and Detroit shop floor reality. A practical guide for managers tired of Pilot Purgatory.</p>
+                    
+                    <a href="https://www.amazon.com/dp/B0GFX3TKWK" target="_blank" class="btn">ORDER ON AMAZON</a>
+                    
+                    <div class="format-badges">
+                        <span class="format-item">Hard Cover</span>
+                        <span class="format-item">Paperback</span>
+                        <span class="format-item">Kindle / eBook</span>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <img src="images/TransparentBook.png" 
+                         alt="The Physical AI Playbook 3D Cover" 
+                         class="book-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="problem-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>THE INDUSTRIAL AI REALITY CHECK</h2>
+                <div class="stat-block">
+                    95% OF AI PILOTS DON'T SCALE. THEY DIE.
+                </div>
+            </div>
+            
+            <div class="pain-points-grid">
+                <div class="pain-card">
+                    <div class="card-icon">⟁</div> 
+                    <h3>The Sim-to-Real Gap</h3>
+                    <p>Simulation solves geometry. It fails at entropy. Learn why training in the "Matrix" isn't enough for the messy shop floor.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="card-icon">⚠️</div>
+                    <h3>The Safety Cage</h3>
+                    <p>You can't certify a neural network. Learn how to build the "Deterministic Wrapper" that keeps probabilistic AI safe.</p>
+                </div>
+                <div class="pain-card">
+                    <div class="card-icon">⚡</div>
+                    <h3>The RaaS Trap</h3>
+                    <p>Don't rent your own brain. Understand the economics of Robotics-as-a-Service before you sign the contract.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="book" class="solution-section">
+        <div class="container">
+            <div class="solution-content">
+                <span class="mono-accent">Inside the Book</span>
+                <h2>THE PHYSICAL AI PLAYBOOK</h2>
+                <p class="intro">This isn't a textbook on neural networks. It is a decision framework for the leaders who have to make the technology work when the consultants leave.</p>
+                
+                <ul class="learning-list">
+                    <li><strong>The 4 Quadrant Decision Matrix:</strong> Know exactly when to use AI and when to stick to mechanical automation.</li>
+                    <li><strong>The Tech Stack Audit:</strong> How to decouple hardware from software to avoid vendor lock-in.</li>
+                    <li><strong>Building the Deterministic Wrapper:</strong> Practical architectures for ISO-compliant safety.</li>
+                    <li><strong>The "Monday Morning" Manifesto:</strong> How to launch your first pilot without disrupting production.</li>
+                </ul>
+                <br>
+                <a href="https://www.amazon.com/dp/B0GFX3TKWK" target="_blank" class="btn btn-outline" style="border-color:var(--accent-orange); color:var(--accent-orange);">READ CHAPTER 1</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="author-photo-container">
+                    <img src="images/author.png" 
+                         alt="Víctor Álvarez" 
+                         class="profile-img">
+                </div>
+                <div class="author-bio">
+                    <span class="mono-accent">About the Author</span>
+                    <h2>THE BRIDGE BETWEEN IT & OT</h2>
+                    <p>Víctor Álvarez is Technology and Program Manager at ABB Robotics. With over 20 years of experience, he has navigated every wave from early web to mobile, IoT, and now Physical AI.</p>
+                    <p>He writes for the leaders who have to make the technology work when the consultants leave. He is tired of "AI Lipstick" and advocates for structural transformation over marketing hype.</p>
+                    <a href="https://www.linkedin.com/in/victoralvarez/" target="_blank" class="btn btn-outline">Connect on LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/victoralvarez/" target="_blank">LinkedIn</a>
+                <a href="https://www.amazon.com/dp/B0GFX3TKWK" target="_blank">Amazon</a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 victoralvarez.io. All rights reserved.
+            </div>
+        </div>
+    </footer>
+<div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h3>System Telemetry</h3>
+                <p>We use cookies to analyze traffic and improve the user experience. No personal data is sold. 
+            </div>
+            <div class="cookie-buttons">
+                <button id="btn-reject" class="btn btn-outline btn-small">Reject</button>
+                <button id="btn-accept" class="btn btn-small">Accept Telemetry</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const banner = document.getElementById('cookie-banner');
+            const acceptBtn = document.getElementById('btn-accept');
+            const rejectBtn = document.getElementById('btn-reject');
+
+            // 1. Check if user has already made a choice
+            if (!localStorage.getItem('cookieConsent')) {
+                banner.style.display = 'block'; // Show banner if no choice yet
+            } else {
+                // If they accepted previously, ensure GTM knows
+                if (localStorage.getItem('cookieConsent') === 'granted') {
+                    updateGTM('granted');
+                }
+            }
+
+            // 2. Function to update Google
+            function updateGTM(consentState) {
+                gtag('consent', 'update', {
+                    'ad_storage': consentState,
+                    'ad_user_data': consentState,
+                    'ad_personalization': consentState,
+                    'analytics_storage': consentState
+                });
+            }
+
+            // 3. Handle Accept Click
+            acceptBtn.addEventListener('click', function() {
+                localStorage.setItem('cookieConsent', 'granted');
+                updateGTM('granted');
+                banner.style.display = 'none';
+            });
+
+            // 4. Handle Reject Click
+            rejectBtn.addEventListener('click', function() {
+                localStorage.setItem('cookieConsent', 'denied');
+                updateGTM('denied'); // Explicitly deny (redundant but safe)
+                banner.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
