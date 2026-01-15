@@ -3,7 +3,7 @@
 
 ## Identity
 * **Author:** Víctor Álvarez
-* **Role:** Strategic Technologist in Industrial Robotics
+* **Role:** Technology and Program Manager in Industrial Robotics
 * **Website:** https://victoralvarez.io
 * **Purchase Link:** https://www.amazon.com/dp/B0GFX3TKWK
 
@@ -23,4 +23,5 @@
 * CIOs/CTOs in Manufacturing
 
 ## Availability
+
 Available in Hardcover, Paperback, and Kindle/eBook on Amazon.
